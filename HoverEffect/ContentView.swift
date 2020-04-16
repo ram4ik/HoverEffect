@@ -9,8 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var hovered = false
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text("Hello, Hover Effect!")
+                .scaleEffect(hovered ? 2.0 : 1.0)
+                .animation(.default)
+                .onHover { isHovered in
+                    self.hovered = isHovered
+                }
+            Text("Lift")
+                .hoverEffect(.lift)
+            Text("Highlight")
+                .hoverEffect(.highlight)
+        }.padding()
     }
 }
 
